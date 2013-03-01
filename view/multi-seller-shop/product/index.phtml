@@ -1,0 +1,72 @@
+<?php
+$form->setAttribute('action', $this->url('product'))->prepare();
+
+echo $this->form()->openTag($form);
+
+
+
+/**
+ * the FormRow is a new helper that render a label (if present), the input itself, and errors.
+ */
+//echo $this->formRow($product->get('name'));
+//echo $this->formRow($product->get('price'));
+
+/**
+ * the FormCollection helper will iterate through every elements in the collection, and render every element with the FormRow helper. 
+ * If you need more control about the way you render your forms, you can iterate through the elements in the collection, 
+ * and render them manually one by one.
+ */
+//echo $this->formCollection($product->get('categories'));
+
+
+?>
+<div class="well">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">General</a></li>
+<!--        <li><a href="#profile" data-toggle="tab">Password</a></li>-->
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane active in" id="home">
+            <?php echo $this->form()->openTag($form); ?>
+            
+            <?php $product = $form->get('product'); ?>
+            <?php echo $this->formRow($product->get('name')); ?>
+            <?php echo $this->formRow($product->get('price')); ?>
+            <div class="clear-both"></div>
+            <?php echo $this->formCollection($product->get('categories'),false); ?>
+            <button onclick="return add_category()" class="btn btn-primary">Add a new category</button>
+            <div class="clear-both"></div>
+            <?php $brand = $product->get('brand');
+                  echo $this->formRow($brand->get('name')); ?>
+            <div class="clear-both"></div>
+            <?php echo $this->formRow($brand->get('url'));
+                  echo $this->formHidden($form->get('csrf')); ?>
+            <div class="clear-both"></div>
+            <?php echo $this->formSubmit($form->get('submit')); ?>
+
+            <?php echo $this->form()->closeTag(); ?>
+        </div>
+<!--        <div class="tab-pane fade" id="profile">
+            <form id="tab2">
+                <label>New Password</label>
+                <input type="password" class="input-xlarge">
+                <div>
+                    <button class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>-->
+    </div>
+</div>
+<script>
+    function add_category() {
+        var currentCount = $('#home > fieldset > fieldset').length;
+        var template = $('#home > fieldset > span').data('template');
+        template = template.replace('__index__', currentCount);
+
+        $('#home > fieldset').append(template);
+        
+//        //increase the width of container
+        // ??? find the way to do
+        return false;
+    }
+</script>

@@ -1,0 +1,48 @@
+<?php
+$title = 'My Albums';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p><a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a></p>
+
+<!--<table class="table">
+<tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($albums as $album) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($album['title']);?></td>
+    <td>
+        <a href="<?php echo $this->url('album',array('action'=>'edit', 'id' => $album['id']));?>">Edit</a>
+        <a href="<?php echo $this->url('album',array('action'=>'delete', 'id' => $album['id']));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>-->
+
+<div id="sticky-notes">
+        <div class="sticky-note">
+        <textarea id="stickynote-5">check URL functions in ZF2</textarea>
+        <a class="delete-sticky" id="remove-5" href="#">X</a>
+    </div>
+        <div class="sticky-note">
+        <textarea id="stickynote-6">dasdxasd</textarea>
+        <a class="delete-sticky" id="remove-6" href="#">X</a>
+    </div>
+        <div class="sticky-note">
+        <textarea id="stickynote-7">dasdsadxasdxas</textarea>
+        <a class="delete-sticky" id="remove-7" href="#">X</a>
+    </div>
+        <div class="sticky-note">
+        <textarea id="stickynote-1">This is a sticky note you can type and edit.</textarea>
+        <a class="delete-sticky" id="remove-1" href="#">X</a>
+    </div>
+        <div class="sticky-note">
+        <textarea id="stickynote-2">Lets see if it will work with my iPhone</textarea>
+        <a class="delete-sticky" id="remove-2" href="#">X</a>
+    </div>
+        <div id="create">+</div>
+
+</div>
